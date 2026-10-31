@@ -1,30 +1,37 @@
 # FormulaLab ♡
 
-**FormulaLab** is a bilingual (Português / English) educational skincare comparison project made in Angola. It helps people explore cosmetic ingredient lists, compare the price per volume of products, and learn basic skincare chemistry in accessible language.
+**FormulaLab** é um projeto de skincare science criado em Angola. O site permite pesquisar produtos, comparar listas INCI, explorar possíveis alternativas e aprender química cosmética em linguagem simples.
 
-## Features in the website package
+## Estado atual
 
-- Y2K kawaii design and six matching mascot expressions
-- Portuguese and English pages (`index.html`, `index-en.html`)
-- 20 product records with brand-source links
-- INCI list comparison and ingredient explanations
-- Product search, filters, favorites and optional user-entered prices in Kz
-- Local feedback and development notes
+O repositório foi criado e os ficheiros HTML de entrada foram enviados. Os restantes ficheiros de código e os seis avatares estão no pacote `FormulaLab_GitHub_Ready.zip`, que falta adicionar a este repositório.
 
-**Scientific note:** matching ingredient names is not proof that formulas have equal concentrations, results or safety. The site is educational and does not give personalized medical advice.
+## Importação simples (incluindo no telemóvel)
 
-## Project status
+1. Descarrega [FormulaLab_GitHub_Ready.zip](https://chatgpt.com/) da conversa onde o projeto foi criado. **Não precisas de extrair o ZIP.**
+2. Neste repositório, escolhe **Add file → Upload files**.
+3. Carrega o ficheiro com o nome exato `FormulaLab_GitHub_Ready.zip`, na raiz do repositório, e confirma em **Commit changes**.
+4. Em **Actions**, acompanha **Import and publish FormulaLab**. Esse processo extrai os ficheiros, verifica a lógica de comparação e tenta publicar o website no GitHub Pages.
 
-The source package is prepared, but the complete website files still need to be added to this repository. Do not enable GitHub Pages until the root `index.html`, `styles.css`, `app.js`, `data.js`, `products.json`, and `assets/avatars` directory have been uploaded.
+Se a publicação não ficar disponível, vai a **Settings → Pages → Build and deployment → Source: GitHub Actions** e executa novamente **Import and publish FormulaLab** em **Actions → Run workflow**.
 
-## Files to upload
+O endereço previsto, **após confirmação da publicação**, é:
 
-Use the `FormulaLab_GitHub_Ready.zip` archive prepared for this project. **Extract the ZIP first:** GitHub Pages needs the individual files, not the archive. Keep the original folders and filenames together. The package also includes docs, testing notes and an optional C# backend starter.
+https://daniwhzy.github.io/formulalab/
 
-## Publishing
+## Funcionalidades
 
-After uploading all files, go to **Settings → Pages → Build and deployment**, select **Deploy from a branch**, branch **main**, folder **/(root)**, then **Save**. The intended website URL is `https://daniwhzy.github.io/formulalab/`, once GitHub confirms the deployment.
+- Interface Y2K kawaii em português e inglês
+- Seis ilustrações da mascote
+- Catálogo inicial de 20 produtos com referências das marcas
+- Pesquisa e filtros de skincare
+- Comparação de ingredientes e explicações simples
+- Comparação de preços por volume e valores locais em Kz
+- Favoritos e feedback guardados apenas no navegador
+- Documentação de fontes, testes, investigação e progresso
 
----
+## Nota científica
 
-Made as a student passion project. ♡
+Duas fórmulas com listas de ingredientes semelhantes não são necessariamente equivalentes em eficácia, segurança, concentração ou tolerabilidade. O projeto tem fins educativos e não substitui aconselhamento profissional.
+
+Projeto de estudante, em evolução. ♡
