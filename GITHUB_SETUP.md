@@ -1,31 +1,26 @@
-# Publicar FormulaLab no GitHub
+# FormulaLab — passos de instalação no GitHub
 
-## 1. Criar repositório
+O repositório já foi inicializado com os ficheiros HTML e uma automação de importação.
 
-Abre https://github.com/new enquanto estás na conta `daniwhzy`.
+## A única transferência manual que falta
 
-- **Repository name:** `formulalab`
-- **Description:** `FormulaLab — skincare science & dupe finder | PT / EN`
-- **Visibility:** Public (se quiseres que o projeto e o site sejam públicos)
-- **Initialize:** não adicionar README, .gitignore ou license nesta etapa; o pacote já tem README.
-- Clica **Create repository**.
+No repositório `daniwhzy/formulalab`:
+1. Toca em **Add file → Upload files**.
+2. Escolhe o ficheiro **FormulaLab_GitHub_Ready.zip** (o ZIP disponibilizado na conversa do ChatGPT).
+3. Confirma o upload com **Commit changes**.
+4. Abre o separador **Actions** e acompanha **Import and publish FormulaLab**.
 
-## 2. Enviar ficheiros
+A automação criada em `.github/workflows/import-formulalab.yml` vai:
+- extrair o ZIP;
+- verificar que existem as páginas, estilos, JavaScript, catálogo e seis imagens;
+- executar o teste do algoritmo;
+- enviar os ficheiros extraídos para o ramo `main`;
+- tentar configurar e publicar o GitHub Pages.
 
-No repositório vazio, escolhe **uploading an existing file**. Extrai primeiro este ZIP no computador e carrega os FICHEIROS E PASTAS de dentro (index.html tem de ficar na raiz). Faz commit.
+Se o GitHub solicitar ativação de GitHub Pages, vai a **Settings → Pages → Build and deployment**, define **Source: GitHub Actions**, guarda e volta a **Actions** para executar o workflow manualmente.
 
-Também podes pedir ao ChatGPT, com a ligação GitHub ativa, para enviar esta versão depois de criares o repositório. O ChatGPT pode verificar e atualizar os ficheiros utilizando a ligação autorizada.
+O endereço previsto é `https://daniwhzy.github.io/formulalab/`, mas apenas depois de o deployment ficar concluído com sucesso.
 
-## 3. Ativar GitHub Pages
+## Importante
 
-Abre o repositório > **Settings** > **Pages**.
-- **Source:** Deploy from a branch
-- **Branch:** main
-- **Folder:** /(root)
-- **Save**
-
-O site ficará disponível em `https://daniwhzy.github.io/formulalab/` quando o GitHub terminar a publicação. Esse endereço é uma expectativa, não um link verificado até à publicação.
-
-## 4. Confirmar
-
-Verifica homepage em português, seletor EN, pesquisas, comparação INCI, preços manuais, favoritos, imagens e visualização no telemóvel. O site tem dados científicos educativos, não recomendações médicas nem confirmação de equivalência entre fórmulas.
+Os nomes e a estrutura dentro do ZIP devem ser preservados. Não publiques um ZIP isolado como se fosse o site. O código e as seis ilustrações precisam de estar disponíveis na raiz e em `assets/avatars/` depois da importação.
