@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-AO">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#a87be1"><meta name="description" content="FormulaLab — compara ingredientes e encontra alternativas de skincare.">
+<title>FormulaLab ♡ — ciência e skincare para todos</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page-shell">
+  <div class="announcement">✦ O TEU CLUBE DE CIÊNCIA DO SKINCARE ✦ <span>✿</span> COMPARA MELHOR, GASTA MENOS</div>
+  <header class="site-header">
+    <a href="#home" class="brand" aria-label="Página inicial do FormulaLab">formula<span>lab!</span><i>✳</i></a>
+    <nav aria-label="Navegação principal"><a href="#compare">detetive de dupes</a><a href="#decoder">descodificador de ingredientes</a><a href="#about">sobre o laboratório</a></nav>
+    <a href="#favorites" class="nav-favs">♡ <span>guardados</span> <b id="favorite-count">0</b></a>
+    <div class="language-switch" role="group" aria-label="Idioma / Language"><a class="active" href="index.html" lang="pt" hreflang="pt-AO" aria-label="Português" aria-current="page">PT</a><span aria-hidden="true">/</span><a class="" href="index-en.html" lang="en" hreflang="en" aria-label="English" >EN</a></div>
+    <button class="mobile-menu" id="mobile-menu" aria-expanded="false" aria-controls="mobile-links" aria-label="Abrir menu">☰</button>
+  </header>
+  <div class="mobile-links" id="mobile-links"><a href="#compare">detetive de dupes</a><a href="#decoder">descodificador de ingredientes</a><a href="#about">sobre o laboratório</a><a href="#favorites">produtos guardados</a></div>
+
+  <main id="home">
+    <section class="hero decorated" aria-labelledby="hero-title">
+      <span class="hero-spark a">✧</span><span class="hero-spark b">✳</span><span class="hero-spark c">♡</span>
+      <div class="hero-copy"><div class="small-tag">✧ BEM-VINDA AO TEU LABORATÓRIO DE BELEZA ✧</div>
+        <h1 id="hero-title">cuidar da pele<br>não precisa de<br><em>custar uma fortuna!</em></h1>
+        <p>Encontra alternativas mais acessíveis, descobre para que servem os ingredientes e escolhe com mais informação. <span>♡</span></p>
+        <form id="hero-search" class="hero-search"><label class="sr-only" for="search-input">Pesquisar produtos de skincare</label><span aria-hidden="true">⌕</span><input id="search-input" placeholder="experimenta “niacinamide” ou “sérum”..." autocomplete="off"><button type="submit">encontrar alternativa ✦</button></form>
+        <div class="hero-footnote">✿ ingredientes, não publicidade <span>✧</span> fácil para iniciantes</div>
+      </div>
+      <div class="hero-art"><div class="orbit-sticker s1">✳</div><div class="avatar-halo"><img width="512" height="512" src="assets/avatars/welcome.png" alt="Mascote do FormulaLab, com cabelo encaracolado e acessórios rosa e lilás"></div><div class="avatar-label">olá, sou a tua guia! ♡</div><span class="art-mini left">✿</span><span class="art-mini right">✦</span></div>
+    </section>
+
+    <section class="feature-strip" aria-label="O que o FormulaLab faz">
+      <a class="feature pink" href="#compare"><span class="feature-icon">♡</span><strong>detetive de dupes</strong><small>Ingredientes parecidos,<br>preços mais baixos.</small><span class="feature-arrow">↗</span></a>
+      <a class="feature lime" href="#decoder"><span class="feature-icon">⚗</span><strong>descodificador de ingredientes</strong><small>Palavras difíceis?<br>Nós explicamos.</small><span class="feature-arrow">↗</span></a>
+      <a class="feature peach" href="#about"><span class="feature-icon">✳</span><strong>ciência sem complicações</strong><small>Queres saber como<br>funcionam as fórmulas?</small><span class="feature-arrow">↗</span></a>
+    </section>
+
+    <section id="compare" class="main-section">
+      <div class="section-heading"><div><p class="eyebrow">✦ VAMOS INVESTIGAR ✦</p><h2>o detetive de <i>dupes</i> <span>♡</span></h2><p>Escolhe dois produtos para veres os ingredientes em comum, as diferenças e qual custa menos.</p></div><div class="stamp">ANÁLISE<br>DE FÓRMULA ✓</div></div>
+      <div class="notice notice-mascot"><img src="assets/avatars/warning.png" width="512" height="512" loading="lazy" alt="Mascote a chamar a atenção para os limites da comparação"><p><strong>Catálogo real, pesquisa educativa:</strong> As listas INCI foram consultadas em páginas oficiais das marcas. Preços em EUR são referências externas, <strong>não preços em Angola</strong>. A semelhança das listas não comprova eficácia nem segurança.</p></div>
+      <div class="filters"><div class="filter-buttons" role="group" aria-label="Filtrar produtos"><button class="filter active" data-filter="all">todos os produtos</button><button class="filter" data-filter="serum">séruns</button><button class="filter" data-filter="moisturizer">hidratantes</button><button class="filter" data-filter="cleanser">limpeza</button><button class="filter" data-filter="exfoliant">esfoliantes</button></div><label class="mini-search">⌕ <input id="catalog-search" placeholder="filtrar por nome ou ingrediente" list="product-suggestions" aria-label="Filtrar catálogo de produtos"></label></div>
+      <div class="catalog-extras"><label class="skin-filter-label" for="skin-filter">Foco informativo: <select id="skin-filter"><option value="all">todos os tipos</option><option value="oleosa">pele oleosa</option><option value="mista">pele mista</option><option value="seca">pele seca</option><option value="sensivel">pele sensível</option></select></label><small>As categorias são descritivas; não garantem compatibilidade com a pele.</small><span id="catalog-count"></span></div><datalist id="product-suggestions"></datalist><div id="catalog" class="product-grid" aria-live="polite"></div>
+      <div class="compare-panel">
+        <div class="panel-title"><div><p class="eyebrow">♡ A TUA EXPERIÊNCIA NO LABORATÓRIO</p><h3>comparar duas fórmulas</h3></div><span class="pill lavender">✳ listas reais com fontes</span></div>
+        <div class="mascot-hint mascot-hint-thinking"><img src="assets/avatars/thinking.png" width="512" height="512" loading="lazy" alt="Mascote a analisar ingredientes"><p><strong>Modo análise ativado! ✦</strong><span>Vamos descobrir o que estas fórmulas têm em comum! ♡</span></p></div><div class="selectors"><label>PRODUTO A <select id="product-a"></select></label><span class="vs">VS</span><label>PRODUTO B <select id="product-b"></select></label></div>
+        <div class="compare-actions"><button id="best-match" class="primary-btn" type="button">✦ procurar alternativa semelhante</button><span id="match-status" role="status"></span></div><div class="local-prices"><p><strong>Preços locais (opcional)</strong> ♡ Introduz valores em Kz que confirmaste em lojas para comparar custos. Ficam guardados apenas neste navegador.</p><div class="price-inputs"><label>Produto A (Kz) <input type="number" id="price-a" min="0.01" step="0.01" inputmode="decimal" placeholder="sem preço local"></label><label>Produto B (Kz) <input type="number" id="price-b" min="0.01" step="0.01" inputmode="decimal" placeholder="sem preço local"></label><button id="save-prices" type="button" class="plain-btn">guardar preços ♡</button></div><small id="price-status" role="status"></small></div><div id="comparison-output" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="decoder" class="decoder-section main-section"><div class="decoder-head"><p class="eyebrow">✧ O CANTINHO DA QUÍMICA</p><h2>descodificador de <i>ingredientes!</i></h2><p>Cola uma lista de ingredientes de skincare. Vamos identificar os ingredientes da nossa lista inicial e explicar as suas funções em português simples.</p></div>
+      <div class="mascot-hint mascot-hint-explain"><img src="assets/avatars/explaining.png" width="512" height="512" loading="lazy" alt="Mascote a explicar um conceito"><p><strong>Ciência em palavras simples! ✨</strong><span>Cola uma lista e eu ajudo-te a compreender os ingredientes.</span></p></div><div class="decoder-grid"><div><label for="inci-input" class="field-label">COLA AQUI A LISTA INCI ♡</label><textarea id="inci-input" rows="6" placeholder="Ex.: Aqua, Glycerin, Niacinamide, Panthenol, Sodium Hyaluronate..."></textarea><div class="decoder-actions"><button id="decode-btn" class="primary-btn">explicar ingredientes ✦</button><button id="sample-btn" class="plain-btn">usar exemplo</button></div><small>Dica: separa os ingredientes por vírgulas. Esta ferramenta é educativa e não confirma se um produto é seguro para ti.</small></div><div id="decode-output" class="decode-output"><div class="empty-decoder"><span>⚗</span><h3>vamos descobrir a química!</h3><p>As explicações dos ingredientes vão aparecer aqui.</p></div></div></div>
+    </section>
+
+    <section id="sources" class="main-section source-section"><div class="section-heading"><div><p class="eyebrow">✦ TRANSPARÊNCIA ✦</p><h2>de onde vêm os <i>dados?</i></h2><p>As listas INCI foram transcritas de páginas oficiais das marcas. Os preços em EUR são referências europeias para o tamanho indicado, não ofertas em Angola. Confirma sempre a embalagem e a data.</p></div></div><div class="source-links"><a href="https://cosmileeurope.eu/" target="_blank" rel="noopener noreferrer">COSMILE Europe — funções dos ingredientes ↗</a><a href="https://single-market-economy.ec.europa.eu/sectors/cosmetics/cosmetic-ingredient-database_en" target="_blank" rel="noopener noreferrer">CosIng — Comissão Europeia ↗</a><a href="https://theordinary.com/pt-pt" target="_blank" rel="noopener noreferrer">The Ordinary — páginas da marca ↗</a><a href="https://geekandgorgeous.com/" target="_blank" rel="noopener noreferrer">Geek & Gorgeous — páginas da marca ↗</a></div><p class="data-note">Atualização manual: 30/10/2026 · Projeto educativo, sem afiliação com as marcas. Não recolhemos dados em servidores; favoritos, preços e feedback ficam no teu navegador.</p></section><section id="favorites" class="main-section favorites-section"><div class="section-heading"><div><p class="eyebrow">✳ A TUA COLEÇÃO</p><h2>produtos <i>guardados</i> ♡</h2><p>Toca no coração para guardar um produto neste dispositivo.</p></div></div><div class="mascot-hint mascot-hint-love"><img src="assets/avatars/love.png" width="512" height="512" loading="lazy" alt="Mascote a abraçar um coração rosa"><p><strong>A tua coleção fofinha ♡</strong><span>Os teus favoritos ficam guardados neste navegador.</span></p></div><div id="favorites-content" class="favorite-list"></div></section>
+    <section id="feedback" class="main-section feedback-section"><div class="section-heading"><div><p class="eyebrow">✦ TESTAR & MELHORAR</p><h2>ajuda a melhorar o <i>laboratório!</i> ♡</h2><p>Testa o site e regista as tuas observações. As respostas não são enviadas para nenhum servidor.</p></div></div><form id="feedback-form" class="feedback-form"><label>A pesquisa é fácil de usar? <select name="search"><option value="sim">Sim</option><option value="mais-ou-menos">Mais ou menos</option><option value="nao">Não</option></select></label><label>Consegues compreender as comparações? <select name="compare"><option value="sim">Sim</option><option value="mais-ou-menos">Mais ou menos</option><option value="nao">Não</option></select></label><label>O que devemos melhorar? <textarea name="comment" rows="3" maxlength="1000" placeholder="Escreve a tua sugestão..."></textarea></label><button type="submit" class="primary-btn">guardar resposta neste dispositivo ✦</button><div id="feedback-status" role="status"></div><button id="export-feedback" class="plain-btn" type="button">exportar feedback (.json)</button></form><div class="private-metrics"><h3>O meu mini-relatório de testes ✳</h3><p>Métricas guardadas apenas neste dispositivo. Não representam o total de utilizadores do site.</p><div id="metrics-content" aria-live="polite"></div><button id="export-metrics" type="button" class="plain-btn">exportar métricas (.json)</button></div></section><section id="about" class="about-section"><div class="about-avatar"><img loading="lazy" width="512" height="512" src="assets/avatars/welcome.png" alt="FormulaLab mascot"></div><div><p class="eyebrow">OLÁ DO LABORATÓRIO ♡</p><h2>fórmulas giras.<br><i>escolhas inteligentes.</i></h2><p>O FormulaLab é um projeto estudantil que junta química cosmética, programação e design. Ajuda-te a compreender o que existe nos produtos, sem fingir que uma lista de ingredientes conta a história toda.</p><p class="about-note">♡ Protótipo com fontes de marcas e preços de referência europeus. Os rótulos podem mudar e a disponibilidade e os preços em Angola ainda precisam de verificação.</p></div></section>
+  </main>
+  <footer><div class="footer-brand">formula<span>lab!</span> ✧</div><p>feito com curiosidade, química e um toque de brilho ♡</p><small>Protótipo educativo · Não é orientação médica · Preços sujeitos a mudanças · Sem links de afiliados · © 2026 Protótipo FormulaLab · Mascote: 6 expressões</small></footer>
+</div>
+<script src="data.js"></script><script src="app.js"></script>
+<script>
+  document.querySelectorAll('.language-switch a').forEach(link => link.addEventListener('click', () => {
+    const hash = window.location.hash;
+    if (hash) link.href = link.getAttribute('href').split('#')[0] + hash;
+  }));
+</script>
+</body></html>
