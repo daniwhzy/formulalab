@@ -1,0 +1,54 @@
+name: Prepare FormulaLab mascot expressions
+on:
+  push:
+    paths:
+      - 'assets/*.jpg'
+      - 'assets/*.jpeg'
+      - 'assets/*.png'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  create-avatars:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image library
+        run: python -m pip install Pillow
+      - name: Crop supplied six-expression collage
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageDraw
+          files = sorted([p for p in Path("assets").iterdir() if p.is_file() and p.suffix.lower() in (".png",".jpg",".jpeg")])
+          if not files:
+              raise SystemExit("Please upload your six-expression image to assets first.")
+          src = files[-1]
+          picture = Image.open(src).convert("RGBA")
+          w,h = picture.size
+          if w < 600 or h < 400:
+              raise SystemExit("The image must be a 3x2 collage, at least 600 by 400 pixels.")
+          targets=[("welcome",0,0),("happy",1,0),("thinking",2,0),("explaining",0,1),("warning",1,1),("love",2,1)]
+          dest=Path("assets/avatars"); dest.mkdir(parents=True, exist_ok=True)
+          for name,col,row in targets:
+              crop=picture.crop((round(w*col/3),round(h*row/2),round(w*(col+1)/3),round(h*(row+1)/2)))
+              cw,ch=crop.size
+              for point in [(0,0),(cw-1,0),(0,ch-1),(cw-1,ch-1)]:
+                  color=crop.getpixel(point)
+                  if min(color[:3])>=220:
+                      ImageDraw.floodfill(crop, point, (255,255,255,0), thresh=26)
+              crop.save(dest/(name+".png"), optimize=True)
+          print("Created:",", ".join(name for name,_,_ in targets),"from",src)
+          PY
+      - name: Commit mascot PNGs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/avatars
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: create six original mascot expressions"
+            git push
+          fi
