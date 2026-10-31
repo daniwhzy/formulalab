@@ -1,0 +1,43 @@
+name: Import complete FormulaLab 2.1 package
+on:
+  push:
+    paths:
+      - '.github/workflows/import-original.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Extract the original approved website package
+        run: |
+          test -s FormulaLab_v2_1_Com_6_Avatars.zip
+          mkdir -p _import
+          unzip -oq FormulaLab_v2_1_Com_6_Avatars.zip -d _import
+          test -s _import/FormulaLab_v2_1/index.html
+          test -s _import/FormulaLab_v2_1/index-en.html
+          test -s _import/FormulaLab_v2_1/styles.css
+          test -s _import/FormulaLab_v2_1/app.js
+          test -s _import/FormulaLab_v2_1/data.js
+          for avatar in welcome happy thinking explaining warning love; do
+            test -s "_import/FormulaLab_v2_1/assets/avatars/$avatar.png"
+          done
+      - name: Test original ingredient comparison logic
+        run: node _import/FormulaLab_v2_1/test_core.js
+      - name: Restore real assets and original source
+        run: |
+          cp -a _import/FormulaLab_v2_1/. .
+          rm -rf _import
+          rm -f cards.css layout.css responsive.css catalog-1.js catalog-2.js catalog-3.js catalog-4.js site-core.js site-catalog.js site-compare.js site-extras.js site-status.txt
+      - name: Commit imported website
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "feat: restore original FormulaLab website and six mascot illustrations"
+            git push
+          fi
