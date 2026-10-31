@@ -1,0 +1,46 @@
+name: Import FormulaLab project ZIP
+
+on:
+  push:
+    paths:
+      - FormulaLab_GitHub_Ready.zip
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Extract the original website package
+        run: |
+          test -f FormulaLab_GitHub_Ready.zip || { echo "Upload FormulaLab_GitHub_Ready.zip first."; exit 1; }
+          unzip -o FormulaLab_GitHub_Ready.zip -d .
+          test -s index.html
+          test -s index-en.html
+          test -s styles.css
+          test -s app.js
+          test -s data.js
+          test -s products.json
+          test -f assets/avatars/welcome.png
+          test -f assets/avatars/happy.png
+          test -f assets/avatars/thinking.png
+          test -f assets/avatars/explaining.png
+          test -f assets/avatars/warning.png
+          test -f assets/avatars/love.png
+
+      - name: Commit unpacked website files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "feat: import full FormulaLab website and mascot assets"
+            git push
+          fi
